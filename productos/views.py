@@ -41,7 +41,6 @@ def crear_producto(request):
             detalle = form_detalle.save(commit=False)
             detalle.producto = producto
             detalle.save()
-            form_producto.save_m2m()  # Guardar las etiquetas (Many-to-Many)
             
             messages.success(request, 'Producto creado exitosamente')
             return redirect('detalle_producto', id=producto.id)
