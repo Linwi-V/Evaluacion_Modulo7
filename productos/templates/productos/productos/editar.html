@@ -1,14 +1,91 @@
 {% extends 'base.html' %}
-
 {% block title %}Editar Producto{% endblock %}
-
 {% block content %}
-<h1>Editar Producto</h1>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header bg-warning text-white">
+                <h4 class="mb-0">{{ titulo }}</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <h5>Información del Producto</h5>
+                    <hr>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        {{ form_producto.nombre }}
+                        {% if form_producto.nombre.errors %}
+                            <div class="text-danger">{{ form_producto.nombre.errors }}</div>
+                        {% endif %}
+                    </div>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Actualizar</button>
-    <a href="{% url 'lista_productos' %}" class="btn btn-secondary">Cancelar</a>
-</form>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        {{ form_producto.descripcion }}
+                        {% if form_producto.descripcion.errors %}
+                            <div class="text-danger">{{ form_producto.descripcion.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Precio</label>
+                            {{ form_producto.precio }}
+                            {% if form_producto.precio.errors %}
+                                <div class="text-danger">{{ form_producto.precio.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Categoría</label>
+                            {{ form_producto.categoria }}
+                            {% if form_producto.categoria.errors %}
+                                <div class="text-danger">{{ form_producto.categoria.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Etiquetas</label>
+                        <div class="border p-3 rounded">
+                            {{ form_producto.etiquetas }}
+                        </div>
+                        {% if form_producto.etiquetas.errors %}
+                            <div class="text-danger">{{ form_producto.etiquetas.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <h5 class="mt-4">Detalles del Producto</h5>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Dimensiones</label>
+                            {{ form_detalle.dimensiones }}
+                            {% if form_detalle.dimensiones.errors %}
+                                <div class="text-danger">{{ form_detalle.dimensiones.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Peso (kg)</label>
+                            {{ form_detalle.peso }}
+                            {% if form_detalle.peso.errors %}
+                                <div class="text-danger">{{ form_detalle.peso.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-warning">Actualizar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

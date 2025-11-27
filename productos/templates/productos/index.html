@@ -6,7 +6,7 @@
 <div class="text-center">
     <h1 class="mb-4">Bienvenido al Sistema de Gestión de Productos</h1>
     <a href="{% url 'lista_productos' %}" class="btn btn-success btn-lg mb-2">Productos</a>
-    <a href="#" class="btn btn-success btn-lg mb-2">Categorías</a>
-    <a href="#" class="btn btn-success btn-lg mb-2">Etiquetas</a>
+    <a href="{% url 'lista_categorias' %}" class="btn btn-success btn-lg mb-2">Categorías</a>
+    <a href="{% url 'lista_etiquetas' %}" class="btn btn-success btn-lg mb-2">Etiquetas</a>
 </div>
 {% endblock %}
