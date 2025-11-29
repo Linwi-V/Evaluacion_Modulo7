@@ -6,6 +6,102 @@ Sistema de gestión de productos desarrollado con Django que permite a los usuar
 
 Este proyecto forma parte del portafolio del Módulo 7 del Bootcamp Desarrollo Full Stack de Python. Permite crear, visualizar, editar y eliminar productos, gestionando sus categorías, etiquetas y detalles. Se implementan funcionalidades completas de CRUD, validación de formularios y navegación con templates heredados, siguiendo las buenas prácticas del framework Django.
 
+## Problemática Resuelta
+
+Las pequeñas y medianas empresas, emprendimientos y tiendas online necesitan sistemas accesibles para gestionar su inventario de productos. Las soluciones comerciales suelen ser costosas o demasiado complejas para operaciones básicas, mientras que las hojas de cálculo carecen de funcionalidades específicas como categorización múltiple, gestión de relaciones y validación de datos.
+
+Este sistema resuelve:
+- **Gestión integral**: Control completo de productos con categorías y etiquetas
+- **Organización flexible**: Sistema de etiquetas múltiples para clasificación versátil
+- **Información detallada**: Gestión de especificaciones técnicas (dimensiones, peso)
+- **Validación robusta**: Formularios con validación automática de datos
+- **Escalabilidad**: Arquitectura preparada para crecimiento futuro
+- **Accesibilidad**: Interfaz intuitiva sin curva de aprendizaje compleja
+
+El proyecto demuestra el dominio de relaciones complejas entre modelos (Foreign Key y Many-to-Many) y operaciones CRUD completas, habilidades esenciales para el desarrollo de aplicaciones empresariales.
+
+## Enfoque de Desarrollo
+
+El proyecto siguió una metodología de desarrollo estructurada enfocada en relaciones entre entidades:
+
+### 1. Análisis y Diseño de Base de Datos
+- Identificación de entidades principales: Producto, Categoría, Etiqueta, Detalle
+- Definición de relaciones:
+  - **Uno a Uno**: Producto - Detalle (información técnica)
+  - **Uno a Muchos**: Categoría - Productos
+  - **Muchos a Muchos**: Productos - Etiquetas
+
+### 2. Implementación del Modelo de Datos
+
+**Modelos Django:**
+- Modelo Producto con campos esenciales (nombre, descripción, precio)
+- Modelo Detalle con OneToOneField para especificaciones técnicas
+- Modelo Categoria con ForeignKey para clasificación
+- Modelo Etiqueta con ManyToManyField para clasificación flexible
+
+**Migraciones:**
+- Creación de migraciones iniciales
+- Gestión de cambios en el esquema de datos
+- Propagación de relaciones entre tablas
+
+### 3. Desarrollo de Lógica de Negocio
+
+**Vistas basadas en funciones (FBV):**
+- Operaciones CRUD completas para Productos
+- Gestión de Categorías y Etiquetas
+- Manejo de formularios con validación
+- Sistema de mensajes de feedback
+
+**Formularios Django:**
+- ProductoForm con validación de campos obligatorios
+- DetalleForm para especificaciones técnicas
+- Integración de widgets Bootstrap
+- Manejo de errores con mensajes descriptivos
+
+### 4. Desarrollo de Interfaz de Usuario
+
+**Sistema de Templates:**
+- Template base con navbar y estructura general
+- Herencia de templates para código DRY
+- Templates específicos para cada operación CRUD
+- Integración de Bootstrap 5.3 para diseño responsivo
+
+**Componentes visuales:**
+- Cards para visualización de productos
+- Tablas responsivas con información detallada
+- Badges de colores para etiquetas
+- Formularios con validación visual
+- Confirmaciones para acciones críticas
+
+### 5. Configuración del Panel de Administración
+- Registro de todos los modelos
+- Personalización de vistas de lista
+- Configuración de campos de búsqueda
+- Filtros para navegación eficiente
+
+### 6. Testing y Validación
+- Pruebas de operaciones CRUD
+- Validación de relaciones entre modelos
+- Testing de formularios con datos válidos e inválidos
+- Verificación de integridad referencial
+- Pruebas de interfaz en diferentes dispositivos
+
+### 7. Seguridad y Buenas Prácticas
+- Implementación de protección CSRF
+- Uso de get_object_or_404 para manejo de errores
+- Validación de datos en servidor
+- Preparación para despliegue en producción
+
+### Buenas Prácticas Aplicadas
+- Separación clara de responsabilidades (MVT)
+- Código DRY con herencia de templates
+- Nombres descriptivos en variables y funciones
+- Comentarios en código complejo
+- Migraciones versionadas correctamente
+- Control de versiones con Git
+- Documentación completa del proyecto
+- Configuración lista para producción
+
 ## Características Principales
 
 ### Funcionalidades Implementadas
